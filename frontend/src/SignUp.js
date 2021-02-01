@@ -1,18 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Col, Button, Jumbotron, Container, Form, FormGroup,Label, Input } from 'reactstrap';
+import axios from 'axios'
+
+const INITIAL_STATE = {
+    firstName: '',
+    lastname:'',
+    email : ''
+}
 
 function SignUp(){
+
+    const [form, setForm] = useState(INITIAL_STATE)
+
+    const handleChange = (e) => {
+        const {name, value} = e.target
+        setForm( fData => ({...fData,
+        [name]: value}))
+    }
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        alert('adding')
+        addUser()
+    }
+
+    async function addUser(){
+        let res = await axios.post('http://localhost:5000/', form)
+        console.log(form, res)
+    }
     
     return(
-        <div>
+        <Container >
+            <Jumbotron fluid>
             <h1>Yodlr Registration Portal</h1>
-            <form>
-                Email: <input type="email" name="email"/>
-                <button type="submit">Submit</button>
-            </form>
+            <Form onSubmit={handleSubmit}>
+                <FormGroup row>
+                    <Label for="firstName" sm={2}>First Name:</Label>
+                    <Col sm={10}>
+                    <Input type="text" name="firstName" id="firstName" placeholder="First name" value={form.firstName} onChange={handleChange} />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Label for="lastName">Last Name:</Label>
+                    <Input type="text" name="lastName" id="lastName" placeholder="Last name" value={form.lastName} onChange={handleChange} />
+                </FormGroup>
+                <FormGroup row>
+                    <Label for='email'>Email:</Label>
+                    <Input type="email" name="email" placeholder='Email' value={form.email} onChange={handleChange}/> {'  '}
+                </FormGroup>
+                <Button color='primary' type="submit" onClick={handleSubmit}>Submit</Button>
+            </Form>
+            <hr></hr>
             <p>
-              <a href="/admin">Admin Page</a>
+              <Button color='info' href="/admin" style={{margin: '1rem'}}>Admin Page</Button>
             </p>
-        </div>
+            </Jumbotron>
+        </Container>
     )
 }
 
