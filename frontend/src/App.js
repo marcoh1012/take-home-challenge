@@ -1,0 +1,16 @@
+import logo from './logo.svg';
+import './App.css';
+import Routes from './Routes'
+import {  BrowserRouter } from "react-router-dom";
+
+function App() {
+  return (
+    <BrowserRouter>
+    <div className="App">
+      <Routes/>
+    </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
