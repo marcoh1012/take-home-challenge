@@ -21,7 +21,7 @@ function SignUp(){
     const handleSubmit = (e) =>{
         e.preventDefault()
         alert('adding')
-        addUser()
+        // addUser()
     }
 
     async function addUser(){
@@ -41,12 +41,16 @@ function SignUp(){
                     </Col>
                 </FormGroup>
                 <FormGroup row>
-                    <Label for="lastName">Last Name:</Label>
+                    <Label for="lastName" sm={2}>Last Name:</Label>
+                    <Col sm={10}>
                     <Input type="text" name="lastName" id="lastName" placeholder="Last name" value={form.lastName} onChange={handleChange} />
+                    </Col>
                 </FormGroup>
                 <FormGroup row>
-                    <Label for='email'>Email:</Label>
-                    <Input type="email" name="email" placeholder='Email' value={form.email} onChange={handleChange}/> {'  '}
+                    <Label for='email' sm={2}>Email:</Label>
+                    <Col sm={10}>
+                    <Input type="email" name="email" placeholder='Email' value={form.email} onChange={handleChange}/>
+                    </Col> 
                 </FormGroup>
                 <Button color='primary' type="submit" onClick={handleSubmit}>Submit</Button>
             </Form>
