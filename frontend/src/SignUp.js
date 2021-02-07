@@ -37,7 +37,7 @@ function SignUp(){
         <Container >
             <Jumbotron fluid style={{marginTop: '5rem'}}>
             <h1>Yodlr Registration Portal</h1>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} style={{paddingRight: '2rem'}}>
                 <FormGroup row>
                     <Label for="firstName" sm={2}>First Name:</Label>
                     <Col sm={10}>
@@ -60,7 +60,7 @@ function SignUp(){
             </Form>
             <hr></hr>
             <p>
-              <Button color='info' href="/admin" style={{margin: '1rem'}}>Admin Page</Button>
+              <Button color='info' href="/admin" style={{margin: '2rem', marginRight: '3.5rem'}}>Admin Page</Button>
             </p>
             </Jumbotron>
         </Container>
