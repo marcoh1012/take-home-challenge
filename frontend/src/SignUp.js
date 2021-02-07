@@ -20,18 +20,22 @@ function SignUp(){
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        alert('adding')
-        // addUser()
+        addUser()
     }
 
     async function addUser(){
-        let res = await axios.post('http://localhost:5000/', form)
-        console.log(form, res)
+        try{
+            await axios.post('http://localhost:5000/users', form)
+            setForm(INITIAL_STATE)
+        }
+        catch {
+            console.log('something went wrong')
+        }
     }
     
     return(
         <Container >
-            <Jumbotron fluid>
+            <Jumbotron fluid style={{marginTop: '5rem'}}>
             <h1>Yodlr Registration Portal</h1>
             <Form onSubmit={handleSubmit}>
                 <FormGroup row>

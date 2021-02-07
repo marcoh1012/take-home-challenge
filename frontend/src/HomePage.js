@@ -5,7 +5,7 @@ function HomePage(){
 
     return (
         <Container className='homePage'>
-            <Jumbotron fluid>
+            <Jumbotron fluid style={{marginTop: '5rem'}}>
                 <Container fluid>
           <h1>Yodlr Design Challenge</h1>
             <p>
